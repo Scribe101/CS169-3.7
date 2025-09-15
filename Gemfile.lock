@@ -3,6 +3,7 @@ GEM
   specs:
     base64 (0.3.0)
     ffi (1.17.2)
+    ffi (1.17.2-x64-mingw-ucrt)
     ffi (1.17.2-x86_64-linux-gnu)
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -40,6 +41,7 @@ GEM
 
 PLATFORMS
   ruby
+  x64-mingw-ucrt
   x86_64-linux
 
 DEPENDENCIES

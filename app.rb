@@ -63,21 +63,29 @@ class WordGuesserApp < Sinatra::Base
     if action == :play
       erb :show # You may change/remove this line
     elsif action == :win
-      erb :win
+      redirect '/win'
     elsif action == :lose
-      erb :lose
+      redirect '/lose'
     else
       raise ArgumentError, "Invalid Return Value"
     end
   end
 
   get '/win' do
-    ### YOUR CODE HERE ###
-    erb :win # You may change/remove this line
+    action = @game.check_win_or_lose()
+    if action == :win
+      erb :win # You may change/remove this line
+    else
+      redirect '/show'
+    end
   end
 
   get '/lose' do
-    ### YOUR CODE HERE ###
-    erb :lose # You may change/remove this line
+    action = @game.check_win_or_lose()
+    if action == :lose
+      erb :lose # You may change/remove this line
+    else
+      redirect '/show'
+    end
   end
 end

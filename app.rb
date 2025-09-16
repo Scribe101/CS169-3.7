@@ -40,11 +40,16 @@ class WordGuesserApp < Sinatra::Base
   # If a guess is invalid, set flash[:message] to "Invalid guess."
   post '/guess' do
     input_guess = params[:guess].to_s[0]
-    return_value = @game.guess(input_guess)
+    begin
+      return_value = @game.guess(input_guess)
+    rescue
+      return_value = nil
+    end
     if return_value == false
       flash[:message] = "You have already used that letter."
+    elsif return_value == nil
+      flash[:message] = "Invalid guess."
     end
-    ### YOUR CODE HERE ###
     redirect '/show'
   end
 
